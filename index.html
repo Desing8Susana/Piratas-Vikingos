@@ -87,26 +87,108 @@
         <h2 id="student-panel-title"></h2>
         <p>¿Qué quieres hacer?</p>
       </div>
-      <div class="activity-grid">
-        <button class="activity-card" data-say="Quiero comunicar algo">
-          <span aria-hidden="true">💬</span><strong>Quiero comunicar</strong>
-        </button>
-        <button class="activity-card" data-say="¿Cómo me siento?">
-          <span aria-hidden="true">😊</span><strong>¿Cómo me siento?</strong>
-        </button>
-        <button class="activity-card" data-say="¿Qué toca ahora?">
-          <span aria-hidden="true">⏰</span><strong>¿Qué toca ahora?</strong>
-        </button>
-        <button class="activity-card" data-say="Quiero jugar">
-          <span aria-hidden="true">🎲</span><strong>Quiero jugar</strong>
-        </button>
+      <div class="activity-grid child-menu">
+        <button class="activity-card" data-open="comunicador"><span aria-hidden="true">💬</span><strong>Comunicador</strong></button>
+        <button class="activity-card" data-open="agenda"><span aria-hidden="true">📅</span><strong>Agenda visual</strong></button>
+        <button class="activity-card" data-open="juegos"><span aria-hidden="true">🎲</span><strong>Juegos</strong></button>
       </div>
-      <p id="voice-status" class="voice-status" aria-live="polite">Pulsa un botón para escuchar las palabras.</p>
+    </section>
+
+    <section id="comunicador" class="view hidden" aria-labelledby="communicator-title">
+      <button class="back-button" data-action="student-home">← Volver a mi panel</button>
+      <div class="intro"><p class="eyebrow">Panel individual</p><h2 id="communicator-title">Comunicador</h2><p>Busca una palabra o elige un pictograma para escucharla.</p></div>
+      <section class="communicator-core" aria-labelledby="core-heading">
+        <h3 id="core-heading">Palabras de uso frecuente</h3>
+        <div id="communicator-core-grid" class="communicator-grid core-grid"></div>
+      </section>
+      <section class="communicator-boards" aria-labelledby="boards-heading">
+        <h3 id="boards-heading">Más pictogramas</h3>
+        <div id="communicator-categories" class="communicator-categories" aria-label="Categorías del comunicador"></div>
+        <p id="communicator-board-status" class="voice-status" aria-live="polite">Elige una categoría para abrir su panel.</p>
+        <div id="communicator-board-grid" class="communicator-grid"></div>
+      </section>
+      <form id="pictogram-search-form" class="pictogram-search-form">
+        <label for="pictogram-search-input">Buscar pictogramas</label>
+        <div class="custom-input-row">
+          <input id="pictogram-search-input" type="search" placeholder="Por ejemplo: comer, jugar, baño" autocomplete="off">
+          <button class="primary-button" type="submit">Buscar</button>
+        </div>
+      </form>
+      <h3 id="pictogram-results-heading" class="pictogram-results-heading">Pictogramas frecuentes</h3>
+      <p id="pictogram-search-status" class="voice-status" aria-live="polite"></p>
+      <div id="communicator-grid" class="communicator-grid"></div>
+      <button id="show-more-pictograms" class="primary-button hidden" type="button">Ver más pictogramas</button>
+      <p id="voice-status" class="voice-status" aria-live="polite">Pulsa una imagen para escucharla.</p>
+    </section>
+
+    <section id="agenda" class="view hidden" aria-labelledby="agenda-title">
+      <button class="back-button" data-action="student-home">← Volver a mi panel</button>
+      <div class="intro"><p class="eyebrow">Panel individual</p><h2 id="agenda-title">Agenda visual</h2><p>Elige un día para ver qué vamos a hacer.</p></div>
+      <div id="days-list" class="days-list" aria-label="Días de la semana"></div>
+      <div id="agenda-day" class="agenda-day" aria-live="polite"></div>
+      <button class="primary-button add-activity-button" data-action="toggle-add-activity" aria-expanded="false">＋ Añadir actividad</button>
+      <div id="agenda-add-panel" class="agenda-add-panel hidden">
+        <h3>Añadir una actividad</h3>
+        <p>Toca un pictograma para añadirlo al día seleccionado.</p>
+        <div id="activity-picker" class="activity-picker"></div>
+        <form id="custom-activity-form" class="custom-activity-form">
+          <label for="custom-activity-input">O escribe otra actividad</label>
+          <div class="custom-input-row">
+            <input id="custom-activity-input" type="text" maxlength="45" placeholder="Por ejemplo: logopedia">
+            <button class="primary-button" type="submit">Añadir</button>
+          </div>
+          <div class="pictogram-picker" aria-label="Elige un pictograma para tu actividad"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="juegos" class="view hidden" aria-labelledby="games-title">
+      <button class="back-button" data-action="student-home">← Volver a mi panel</button>
+      <div class="intro"><p class="eyebrow">Panel individual</p><h2 id="games-title">Juegos</h2><p>Elige un juego.</p></div>
+      <div id="games-menu" class="activity-grid">
+        <button class="activity-card" data-game="colores"><span aria-hidden="true">🎨</span><strong>Encuentra el color</strong></button>
+        <button class="activity-card" data-game="memoria"><span aria-hidden="true">🃏</span><strong>Memoria de parejas</strong></button>
+        <button class="activity-card" data-game="numeros"><span aria-hidden="true">🔢</span><strong>Busca el número</strong></button>
+        <button class="activity-card" data-game="animales"><span aria-hidden="true">🐾</span><strong>Busca el animal</strong></button>
+      </div>
+      <div id="color-game" class="game-area hidden">
+        <button class="back-button" data-action="games-menu">← Volver a los juegos</button>
+        <h3 id="color-prompt">Pulsa «Empezar» para jugar.</h3>
+        <div id="color-options" class="color-options"></div>
+        <p id="color-result" class="voice-status" aria-live="polite"></p>
+        <div id="color-finished" class="finish-card hidden" role="status">
+          <span aria-hidden="true">🎉</span>
+          <h3>¡Juego terminado!</h3>
+          <p>Has encontrado los 10 colores. ¡Buen trabajo!</p>
+          <button class="primary-button" data-action="games-menu">Volver a los juegos</button>
+        </div>
+      </div>
+      <div id="memory-game" class="game-area hidden">
+        <button class="back-button" data-action="games-menu">← Volver a los juegos</button>
+        <h3>¡Encuentra las parejas!</h3>
+        <p class="memory-instructions">Toca dos cartas y busca las que son iguales.</p>
+        <p id="memory-progress" class="memory-progress" aria-live="polite">Parejas: 0 de 4</p>
+        <div id="memory-grid" class="memory-grid"></div>
+        <p id="memory-result" class="voice-status" aria-live="polite"></p>
+        <button class="primary-button" data-action="start-memory">Jugar otra vez</button>
+      </div>
+      <div id="search-game" class="game-area hidden">
+        <button class="back-button" data-action="games-menu">← Volver a los juegos</button>
+        <h3 id="search-prompt"></h3>
+        <div id="search-options" class="search-options"></div>
+        <p id="search-result" class="voice-status" aria-live="polite"></p>
+        <button class="primary-button" data-action="new-search">Siguiente</button>
+        <div id="animal-finished" class="finish-card hidden" role="status">
+          <span aria-hidden="true">🎉</span>
+          <h3 id="finish-title">¡Juego terminado!</h3>
+          <p id="finish-message">¡Buen trabajo!</p>
+          <button class="primary-button" data-action="games-menu">Volver a los juegos</button>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>💙 Comunicación accesible para aprender y compartir 💙</footer>
+  <footer>💙 Comunicación accesible para aprender y compartir 💙<br><small>Pictogramas propiedad del Gobierno de Aragón, creados por Sergio Palao para <a href="https://arasaac.org" target="_blank" rel="noopener noreferrer">ARASAAC</a>. Licencia <a href="https://arasaac.org/terms-of-use" target="_blank" rel="noopener noreferrer">CC BY-NC-SA</a>.</small></footer>
   <script src="script.js"></script>
 </body>
 </html>
-
