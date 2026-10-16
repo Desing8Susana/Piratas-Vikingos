@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf5ff">
+  <title>Apoyo y comunicación</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-mark" aria-hidden="true">🌈</div>
+    <div>
+      <h1>Apoyo y comunicación</h1>
+      <p>Un espacio para aprender, comunicar y jugar</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="view" aria-labelledby="welcome-title">
+      <div class="intro">
+        <p class="eyebrow">Bienvenidos</p>
+        <h2 id="welcome-title">¿Quién va a usar la web?</h2>
+        <p>Elige una opción para continuar.</p>
+      </div>
+      <div class="portal-grid">
+        <button class="portal-card teacher-card" data-action="teacher">
+          <span class="portal-icon" aria-hidden="true">👩‍🏫</span>
+          <span class="portal-title">Profe</span>
+          <span class="portal-description">Acceso para la profesora</span>
+        </button>
+        <button class="portal-card classroom-card" data-action="classroom">
+          <span class="portal-icon" aria-hidden="true">🏫</span>
+          <span class="portal-title">Aula</span>
+          <span class="portal-description">Actividades para compartir en clase</span>
+        </button>
+        <button class="portal-card students-card" data-action="students">
+          <span class="portal-icon" aria-hidden="true">🧒</span>
+          <span class="portal-title">Alumnos</span>
+          <span class="portal-description">Elige el panel de cada peque</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="alumnos" class="view hidden" aria-labelledby="students-title">
+      <button class="back-button" data-action="home">← Volver al inicio</button>
+      <div class="intro">
+        <p class="eyebrow">Espacios individuales</p>
+        <h2 id="students-title">¿Quién va a usar su panel?</h2>
+        <p>Elige tu nombre para entrar.</p>
+      </div>
+      <div id="student-list" class="student-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="profe" class="view hidden" aria-labelledby="teacher-title">
+      <button class="back-button" data-action="home">← Volver al inicio</button>
+      <div class="intro">
+        <p class="eyebrow">Espacio de la profesora</p>
+        <h2 id="teacher-title">Panel de la profe</h2>
+        <p>Desde aquí podrás preparar y organizar los apoyos del aula.</p>
+      </div>
+      <div class="info-card">
+        <span class="large-icon" aria-hidden="true">🗂️</span>
+        <h3>Panel de preparación</h3>
+        <p>Este espacio queda listo para incorporar la gestión de pictogramas, rutinas y actividades.</p>
+      </div>
+    </section>
+
+    <section id="aula" class="view hidden" aria-labelledby="classroom-title">
+      <button class="back-button" data-action="home">← Volver al inicio</button>
+      <div class="intro">
+        <p class="eyebrow">Uso compartido</p>
+        <h2 id="classroom-title">Panel del aula</h2>
+        <p>Un espacio para realizar actividades entre todos.</p>
+      </div>
+      <div class="info-card">
+        <span class="large-icon" aria-hidden="true">🤝</span>
+        <h3>Actividades para el grupo</h3>
+        <p>Este espacio queda listo para añadir juegos y apoyos visuales de uso común.</p>
+      </div>
+    </section>
+
+    <section id="panel-peque" class="view hidden" aria-labelledby="student-panel-title">
+      <button class="back-button" data-action="students">← Elegir otro alumno</button>
+      <div class="intro">
+        <p class="eyebrow">Panel individual</p>
+        <h2 id="student-panel-title"></h2>
+        <p>¿Qué quieres hacer?</p>
+      </div>
+      <div class="activity-grid">
+        <button class="activity-card" data-say="Quiero comunicar algo">
+          <span aria-hidden="true">💬</span><strong>Quiero comunicar</strong>
+        </button>
+        <button class="activity-card" data-say="¿Cómo me siento?">
+          <span aria-hidden="true">😊</span><strong>¿Cómo me siento?</strong>
+        </button>
+        <button class="activity-card" data-say="¿Qué toca ahora?">
+          <span aria-hidden="true">⏰</span><strong>¿Qué toca ahora?</strong>
+        </button>
+        <button class="activity-card" data-say="Quiero jugar">
+          <span aria-hidden="true">🎲</span><strong>Quiero jugar</strong>
+        </button>
+      </div>
+      <p id="voice-status" class="voice-status" aria-live="polite">Pulsa un botón para escuchar las palabras.</p>
+    </section>
+  </main>
+
+  <footer>💙 Comunicación accesible para aprender y compartir 💙</footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
