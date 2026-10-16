@@ -41,6 +41,8 @@ main { width: min(100% - 32px, 1000px); margin: 0 auto; padding: 28px 0 40px; fl
   cursor: pointer;
   box-shadow: 0 5px 15px #243b5310;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .portal-card:hover, .student-card:hover, .activity-card:hover { transform: translateY(-3px); box-shadow: 0 9px 20px #243b531c; border-color: #78b9e7; }
 .portal-card:focus-visible, .student-card:focus-visible, .activity-card:focus-visible, .back-button:focus-visible { outline: 4px solid #1769aa; outline-offset: 3px; }
@@ -192,4 +194,8 @@ footer { padding: 18px 12px; background: #e3f2fd; text-align: center; color: #35
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+@media (hover: none) {
+  .portal-card:hover, .student-card:hover, .activity-card:hover { transform: none; box-shadow: 0 5px 15px #243b5310; }
 }

@@ -693,6 +693,13 @@ function voltearCarta(carta) {
 }
 
 document.addEventListener('click', (evento) => {
+  const botonSeccion = evento.target.closest('[data-open]');
+  if (botonSeccion) {
+    mostrarVista(botonSeccion.dataset.open);
+    if (botonSeccion.dataset.open === 'comunicador') iniciarPanelComunicador();
+    return;
+  }
+
   const control = evento.target.closest('[data-action]');
   if (!control) return;
 
@@ -717,13 +724,6 @@ document.addEventListener('click', (evento) => {
       break;
     }
   }
-});
-
-document.querySelectorAll('[data-open]').forEach((boton) => {
-  boton.addEventListener('click', () => {
-    mostrarVista(boton.dataset.open);
-    if (boton.dataset.open === 'comunicador') iniciarPanelComunicador();
-  });
 });
 
 document.querySelectorAll('[data-game]').forEach((boton) => {
